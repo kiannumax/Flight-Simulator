@@ -1,16 +1,21 @@
-# This is a sample Python script.
+import pyodbc
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+print(pyodbc.drivers())
 
+server = 'tcp:fsgame.database.windows.net, 1433'
+database = 'FSgame'
+username = 'FSgameUser'
+password = '{aiRbuS320!}'
+driver = '{ODBC Driver 18 for SQL Server}'
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+try:
+    cnxn = pyodbc.connect(f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password}')
 
+    cursor = cnxn.cursor()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+   # cursor.execute("CREATE TABLE Persons (ID int NOT NULL PRIMARY KEY IDENTITY, FirstName varchar(255), LastName varchar(255));")
+    cursor.execute("SELECT * FROM Persons;")
+    test = cursor.fetchall()[0]
+    print(test)
+except Exception as err:
+    print('Cannot connect to SQL server' + str(err))
