@@ -46,10 +46,10 @@ def signup():
     result = check(username, password)
 
     if result == 'exists':
-        return 'exists'
+        return ('exists', None)
 
     elif result == 'fail':
-        return 'fail'
+        return ('fail', None)
 
     else:
-        return 'success'
+        return ('success', DBcall(f"SELECT id FROM users WHERE username = '{username}';")[0][0][0])

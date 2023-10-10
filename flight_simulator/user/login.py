@@ -1,12 +1,12 @@
 from ..database import DBcall
 from .hash import checkPassword
-from .resetPassword import resetPaswrd
+from .changeUserData import resetPassword
 
 def check(username, password):
     query = f"""SELECT COUNT(1) FROM users WHERE username = '{username}';"""
 
     if DBcall(query)[0][0][0] == 1:
-        actualPaswd = DBcall(f"""SELECT password FROM users WHERE username = '{username}'""")[0][0][0]
+        actualPaswd = DBcall(f"""SELECT password FROM users WHERE username = '{username}';""")[0][0][0]
 
         if checkPassword(password, actualPaswd):
             return True
@@ -24,9 +24,10 @@ def login():
     result = check(username, password)
 
     if result:
-        return True
+        return (True, DBcall(f"SELECT id FROM users WHERE username = '{username}';")[0][0][0])
 
     else:
+        print()
         while True:
             option = input(("Invalid username or password. Go back or Reset Password? (b, r) >> ")).lower()
 
@@ -35,10 +36,10 @@ def login():
                 return False
 
             elif option == 'r':
-                result = resetPaswrd()
+                result = resetPassword()
 
-                if result:
-                    return True
+                if result[0]:
+                    return (True, result[1])
 
                 else:
                     return False

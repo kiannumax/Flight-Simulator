@@ -1,63 +1,59 @@
-import mysql.connector as mysql
-import random
+from ..database import DBcall
+from .closestAirports import closestAirports
+from .saveGame import saveGame
+from random import randint
 from geopy import distance
 
-con = mysql.connect(host='localhost', user='root', password='password', database='flight_game')
-cursor = con.cursor()
-current_airport = None
-startingairport = None
-print('<game description>')
-# create table credentials(name varchar(20),password varchar(20));
-start = 1000
-distanc = 0
-l = [100, 50, 0, -50, -100]
+def game(currentUser):
+    initialAirportIndex = randint(1, 70942)
+    randomMoney         = [0, 100, 200, -100, -200]
+    money               = 2000
+    totalDstnc          = 0
+    airportCount        = 0
+
+    currentAirport = initialAirport = DBcall("SELECT name, latitude_deg, longitude_deg FROM airport;")[0][initialAirportIndex]
+
+    while money > 0:
+        print("You are at:", currentAirport[0])
+        print("Money left: ", int(money))
+        print(f"Distance traveled so far: {totalDstnc:.2f}km")
+
+        closestAirports(currentAirport)
+        airportCount += 1
+
+        prevAirport        = (currentAirport[1], currentAirport[2])
+        currentAirportName = input("\nCopy and paste the airport you want to go to >> ")
+        currentAirport     = DBcall(f"SELECT name, latitude_deg, longitude_deg FROM airport WHERE name = '{currentAirportName}';")[0][0]
+
+        dstnc = distance.distance(prevAirport, (currentAirport[1], currentAirport[2])).km
+        moneyChange = randomMoney[randint(0, 4)]
+
+        money = money - (dstnc * 100) + moneyChange
+        totalDstnc += dstnc
+
+        if(money < 0):
+            break
 
 
-def starting_airport():
-    global current_airport
-    a = random.randint(1, 70942)
-    querry = 'select name from airport;'
-    cursor.execute(querry)
-    b = cursor.fetchall()
-    current_airport = b[a][0]
-    return current_airport
+        if moneyChange > 0:
+            print("\nMoney gained: ", moneyChange)
+
+        elif moneyChange < 0:
+            print("\nMoney lost: ", moneyChange)
+
+        else:
+            print("\nNo loss and no Gain!")
 
 
-def airportscloseby():
-    global current_airport, start, distanc, startingairport
-    querry1 = 'select name,latitude_deg,longitude_deg from airport;'
-    cursor.execute(querry1)
-    a = cursor.fetchall()
-    startingairport = starting_airport()
-    querry2 = f'select latitude_deg,longitude_deg from airport where name="{startingairport}"'
-    cursor.execute(querry2)
-    data = cursor.fetchone()
-    for i in a:
-        loc1 = data
-        loc2 = (i[1], i[2])
-        distanc = distance.distance(loc1, loc2).miles
-        if distanc < 10:
-            print(i[0])
-    current_airport = input('copy and paste the airport you want to go to')
-    start = start - (distance1() * 50)
-    x = money_add()
-    print(f'money status from new airport:{x}')
-    start = start + x
-    print(f'money remaining={int(start)}')
+    print("\nGAMEOVER (Unfortunately you ran out of money)\n"
+          "Your game statistics:")
 
+    print(f"Distance traveled: {totalDstnc:.2f} kilometers,\n"
+          f"Amount of Airports visited: {airportCount}")
 
-def distance1():
-    global current_airport
-    querry2 = f'select latitude_deg,longitude_deg from airport where name="{startingairport}"'
-    cursor.execute(querry2)
-    loc1 = cursor.fetchone()
-    querry = f'select latitude_deg,longitude_deg from airport where name="{current_airport}"'
-    cursor.execute(querry)
-    loc2 = cursor.fetchone()
-    x = distance.distance(loc1, loc2).miles
-    return x
+    updated = saveGame(totalDstnc, currentUser, airportCount, initialAirport[0])
 
-
-def money_add():
-    x = random.randint(0, 4)
-    return l[x]
+    if updated:
+        return True
+    else:
+        return False
