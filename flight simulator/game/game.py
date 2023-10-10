@@ -21,6 +21,7 @@ while start>0:
     querry2 = f'select latitude_deg,longitude_deg from airport where name="{current_airport}"'
     cursor.execute(querry2)
     data = cursor.fetchone()
+    print('airports closest to you')
     for i in a:
         loc1 = data
         loc2 = (i[1], i[2])
