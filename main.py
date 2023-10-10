@@ -1,21 +1,61 @@
-import pyodbc
+from flight_simulator.user.signup import signup
+from flight_simulator.user.login import login
+from sys import exit
 
-print(pyodbc.drivers())
+print("Hello and Welcome to our Flight Simulator game!\n"
+      "At this point of the program you can either view the global leaderboard "
+      "or signup/login in order to play the game and view your own profile.\n")
 
-server = 'tcp:fsgame.database.windows.net, 1433'
-database = 'FSgame'
-username = 'FSgameUser'
-password = '{aiRbuS320!}'
-driver = '{ODBC Driver 18 for SQL Server}'
+decided = False
+while not decided:
+    option = input("Choose your option: View leaderboard, Login or Quit? (v, l, q) >> ").lower()
 
-try:
-    cnxn = pyodbc.connect(f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password}')
+    if option == 'v':
+        print("f")
 
-    cursor = cnxn.cursor()
+    elif option == 'l':
+        print("Alright! You will be taken to another input..\n")
+        decided = True
 
-   # cursor.execute("CREATE TABLE Persons (ID int NOT NULL PRIMARY KEY IDENTITY, FirstName varchar(255), LastName varchar(255));")
-    cursor.execute("SELECT * FROM Persons;")
-    test = cursor.fetchall()[0]
-    print(test)
-except Exception as err:
-    print('Cannot connect to SQL server' + str(err))
+    elif option == 'q':
+        print("Exiting the program...")
+        exit(0)
+
+    else:
+        print('\n')
+
+
+signed = False
+while not signed:
+    option = input("Choose your option: Signup, Login or Quit? (s, l, q) >> ").lower()
+
+    if option == 's':
+        result = signup()
+
+        if result == 'exists':
+            print("Account with this username already exists, please use a login option!\n")
+            continue
+
+        elif result == 'fail':
+            print("Unfortunately Signup failed. Try again later!\n")
+
+        else:
+            print("Signup successful! We are happy to have you as our new user!\nEnjoy your game!")
+            signed = True
+
+    elif option == 'l':
+        result = login()
+
+        if result:
+            print("Login successfull! Enjoy your game!")
+            signed = True
+
+        else:
+            continue
+
+    elif option == 'q':
+        print("Exiting the program...")
+        break
+
+    else:
+        print('\n')
