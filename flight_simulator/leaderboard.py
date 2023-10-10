@@ -16,5 +16,5 @@ def showLeaderboard():
             user = DBcall(f"SELECT username FROM users WHERE id = {game[4]};")[0][0][0]
 
             print(f"{i}. Username: {user}, Distance traveled: {game[3]:.2f}km, Amount of Airports visited: {game[2]}, "
-                  f"Initial Airport: {game[1]}km, Date played: {game[0]}")
+                  f"Initial Airport: {game[1]}, Date played: {game[0]}")
             i += 1

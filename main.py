@@ -7,7 +7,7 @@ from sys import exit
 
 currentUser = None
 
-print("Hello and Welcome to our Flight Simulator game!\n"
+print("Hello and Welcome to our AIR Dominance game!\n"
       "At this point of the program you can either view the global leaderboard "
       "or signup/login in order to play the game and view your own profile.\n")
 
@@ -63,19 +63,20 @@ while not signed:
 
     elif option == 'q':
         print("Exiting the program...")
-        break
+        exit(0)
 
     else:
         print('\n')
 
 
-print("\nNow, since you are logged in, you have 4 options what to do next: You can view your own profile (p);\n"
-      "You can read the rules of the game (recommended if playing for the first time) (r);\n"
-      "You can exit the program (q); Or you can start the GAME itself! (g)")
+print("\nNow, since you are logged in, you have 4 options what to do next:")
 
 finishedGame = False
 while not finishedGame:
-    option = input("Choose your option (p, r, q, g) >> ").lower()
+    option = input("You can view your own profile (p);\n"
+                   "You can read the rules of the game (recommended if playing for the first time) (r);\n"
+                   "You can exit the program (q);\nOr you can start the GAME itself! (g)\n"
+                   "Choose your option (p, r, q, g) >> ").lower()
 
     if option == 'p':
         showProfile(currentUser)
@@ -95,7 +96,7 @@ while not finishedGame:
             print("\nGame finished and saved to you profile, where you can later view it.\n"
                   "If it was your best game so far, then expect to see it in a leaderboard!")
         else:
-            print("Game finished, but unoftunately did not get saved to your profile due to uknown reasons.\n"
+            print("Game finished, but unfortunately did not get saved to your profile due to uknown reasons.\n"
                   "Try playing again later!")
 
         finishedGame = True

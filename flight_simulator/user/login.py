@@ -33,7 +33,7 @@ def login():
 
             if option == 'b':
                 print('\n')
-                return False
+                return (False, None)
 
             elif option == 'r':
                 result = resetPassword()
@@ -42,5 +42,4 @@ def login():
                     return (True, result[1])
 
                 else:
-                    return False
-
+                    return (False, None)

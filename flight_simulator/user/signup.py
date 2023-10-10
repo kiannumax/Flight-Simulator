@@ -29,8 +29,8 @@ def check(username, password):
 def signup():
     print("To complete the signup process you will be asked to enter a username and a password\n")
 
-    username = None
-    password = None
+    username       = None
+    password       = None
     essentialsDone = False
 
     while not essentialsDone:
