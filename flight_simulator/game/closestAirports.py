@@ -9,6 +9,6 @@ def closestAirports(currentAirport):
         dstnc = distance.distance((airport[1], airport[2]), (currentAirport[1], currentAirport[2])).km
 
         if dstnc < 20:
-            print(airport[0])
+            print(f"Airport: {airport[0]}, distance: {dstnc:.2f}km")
 
     print("Done")

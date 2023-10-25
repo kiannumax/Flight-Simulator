@@ -28,7 +28,7 @@ def game(currentUser):
         dstnc = distance.distance(prevAirport, (currentAirport[1], currentAirport[2])).km
         moneyChange = randomMoney[randint(0, 4)]
 
-        money = money - (dstnc * 100) + moneyChange
+        money = money - (dstnc * 50) + moneyChange
         totalDstnc += dstnc
 
         if(money < 0):

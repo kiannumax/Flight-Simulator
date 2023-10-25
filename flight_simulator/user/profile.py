@@ -7,7 +7,7 @@ def showProfile(currentUser):
     print(f"\nHere is your profile:\n"
           f"Username: {user[0]}, assigned IP: {user[2]}, date_registered: {user[1]}")
 
-    allGames = DBcall("SELECT date_played, initial_airport, airports_visited, distance FROM games GROUP BY distance DESC;")[0]
+    allGames = DBcall(f"SELECT date_played, initial_airport, airports_visited, distance FROM games WHERE user_id = {currentUser} GROUP BY distance DESC;")[0]
 
     print("\nHere are all your played games sorted from best to worst:")
     for game in allGames:

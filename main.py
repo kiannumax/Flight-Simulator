@@ -82,7 +82,8 @@ while not finishedGame:
         showProfile(currentUser)
 
     elif option == 'r':
-        print('')
+        print("\nYou will be dropped in an random airport and will be given a wallet with initial amount of 2000euros.\n"
+              "You will have to travel to nearby airports scavenging for money and try your luck in getting as far as possible!\n")
 
     elif option == 'q':
         print("Exiting the program...")
