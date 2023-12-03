@@ -2,16 +2,17 @@ from ..database import DBcall
 from .hash import hashPassword
 import socket
 
-def changeUsername(currentUser):
-    username = input('\nPlease type your new username >> ')
+def changeUsername(token, newUsername):
+    insertQuery = f"""UPDATE users SET username = "{newUsername}" where id = '{token}'"""
 
-    insertQuery = f"""UPDATE users SET username = "{username}" where id = '{currentUser}'"""
+    return {'success': DBcall(insertQuery)[1] == 1}
 
-    if DBcall(insertQuery)[1] == 1:
-        print("Username change successfull!\n")
 
-    else:
-        print("Unfortunately username change failed. Try again later!\n")
+def changePassword(token, newPassword):
+    hashedPaswd = hashPassword(newPassword)
+    insertQuery = f"""UPDATE users SET password = "{hashedPaswd}" where id = '{token}'"""
+
+    return {'success': DBcall(insertQuery)[1] == 1}
 
 
 def resetPassword():
