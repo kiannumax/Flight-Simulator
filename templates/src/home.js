@@ -24,15 +24,11 @@ function signedIn() {
     nav.appendChild(button)
 }
 
-function notSignedIn() {
-     document.getElementById('signedIn').setAttribute('class', 'absent');
-}
-
 
 if(localStorage.getItem('token')) {
     signedIn();
 } else {
-    notSignedIn();
+    document.getElementById('signedIn').setAttribute('class', 'absent');
 }
 
 
@@ -63,6 +59,10 @@ async function globalLeaderboard() {
         } finally {
             document.getElementById('globalLeaderboard').appendChild(list);
     }
-     }
+}
+
+document.getElementById('gameStart').addEventListener('click', () => {
+    window.open('http://localhost:63342/FSgame/templates/game.html', '_self');
+});
 
 globalLeaderboard();

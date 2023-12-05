@@ -1,6 +1,5 @@
 from ..database import DBcall
 from .hash import hashPassword
-import socket
 
 def changeUsername(token, newUsername):
     insertQuery = f"""UPDATE users SET username = "{newUsername}" where id = '{token}'"""
@@ -15,38 +14,25 @@ def changePassword(token, newPassword):
     return {'success': DBcall(insertQuery)[1] == 1}
 
 
-def resetPassword():
-    print("Program will ask you to type your username, and if it exists: "
-          "it will compare your IP adress with the assigned one\n")
-
-    username = input("Please enter your username >> ")
-
+def checkIP(username, IP):
     result = DBcall(f"""SELECT COUNT(1), IP FROM users WHERE username = '{username}';""")[0][0]
+    finalData = {'match': None, 'message': None}
 
     if result[0] == 1:
-        assignedIP = result[1]
-
-        hostname = socket.gethostname()
-        hostIP = socket.gethostbyname(hostname)
-
-        if assignedIP == hostIP:
-            password = input("IP's match! Type a new password for the account >> ")
-            hashedPaswd = hashPassword(password)
-
-            insertQuery = f"""UPDATE users SET password = "{hashedPaswd}" where username = '{username}'"""
-
-            if DBcall(insertQuery)[1] == 1:
-                print("Password Reset successfull! You will be logged in. ")
-                return (True, DBcall(f"SELECT id FROM users WHERE username = '{username}';")[0][0][0])
-
-            else:
-                print("Unfortunately password reset failed. Try again later!\n")
-                return (False, None)
+        if IP == result[1]:
+            finalData['match'] = True
 
         else:
-            print("IP's do not match with that username's account. Try again later!\n")
-            return (False, None)
+            finalData['match'], finalData['message'] = False, "IP's do not match with that username's account. Try again later!"
 
     else:
-        print("There is no assigned account with that username. Try signing up!\n")
-        return (False, None)
+        finalData['match'], finalData['message'] = False, "There is no assigned account with that username. Try signing up!"
+
+    return finalData
+
+
+def resetPassword(username, newPassword):
+    hashedPaswd = hashPassword(newPassword)
+    insertQuery = f"""UPDATE users SET password = "{hashedPaswd}" where username = '{username}'"""
+
+    return {'success': DBcall(insertQuery)[1] == 1}

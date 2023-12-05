@@ -1,0 +1,7 @@
+.rightCredentials {
+    display: none;
+}
+
+.wrongCredentials {
+    display: block;
+}

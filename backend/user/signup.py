@@ -1,55 +1,24 @@
 from ..database import DBcall
 from .hash import hashPassword
 import datetime
-import socket
 
-def check(username, password):
+def signup(username, password, IP):
     query = f"SELECT COUNT(1) FROM users WHERE username = '{username}';"
 
     if DBcall(query)[0][0][0] == 0:
         hashedPaswd = hashPassword(password)
         currentDate = datetime.date.today()
 
-        hostname = socket.gethostname()
-        hostIP   = socket.gethostbyname(hostname)
-
         insertQuery = (f"INSERT INTO users (username, password, date_registered, IP)"
-                       f"""VALUES ('{username}', "{hashedPaswd}", '{currentDate}', '{hostIP}');""")
+                       f"""VALUES ('{username}', "{hashedPaswd}", '{currentDate}', '{IP}');""")
 
         if DBcall(insertQuery)[1] == 1:
-            return 'success'
+            token = DBcall(f"SELECT id FROM users WHERE username = '{username}';")[0]
+
+            return {'success': True, 'token': token, 'message': None}
 
         else:
-            return 'fail'
+            return {'success': False, 'token': None, 'message': "Unfortunately, signup failed, try again later!"}
 
     else:
-        return 'exists'
-
-
-def signup():
-    print("To complete the signup process you will be asked to enter a username and a password\n")
-
-    username       = None
-    password       = None
-    essentialsDone = False
-
-    while not essentialsDone:
-        username = input("Please enter a username (max 15 characters) >> ")
-
-        if len(username) > 15:
-            print("Too long!\n")
-            continue
-
-        password = input("Please enter a password (be sure to remember it!) >> ")
-        essentialsDone = True
-
-    result = check(username, password)
-
-    if result == 'exists':
-        return ('exists', None)
-
-    elif result == 'fail':
-        return ('fail', None)
-
-    else:
-        return ('success', DBcall(f"SELECT id FROM users WHERE username = '{username}';")[0][0][0])
+        return {'success': False, 'token': None, 'message': "Sorry but this account already exists, try logging in!"}
