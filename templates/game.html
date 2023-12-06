@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Game</title>
-    <script src="src/profile.js" defer></script>
+    <script src="src/game.js" defer></script>
     <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="home.html">Air Dominance</a>
-            <button id="signout">Sign out</button>
+            <a href="home.html" class="logo">Air Dominance</a>
+            <button id="restartGame">Restart the Game</button>
         </nav>
     </header>
     <main>
-        <div>
-            game
+        <div id="game">
+            <div id="loader"></div>
+            <div id="closestAirports">
+            </div>
+            <div id="currentStatus">
+                <p id="money"></p>
+                <p id="totalDstnc"></p>
+                <p id="airportCount"></p>
+                <p id="monayChange"></p>
+                <div>
+                    <p id="airportName"></p>
+                    <p id="ICAO"></p>
+                </div>
+            </div>
         </div>
     </main>
     <footer>

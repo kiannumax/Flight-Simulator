@@ -1,59 +1,33 @@
 from ..database import DBcall
-from .closestAirports import closestAirports
-from .saveGame import saveGame
 from random import randint
 from geopy import distance
 
-def game(currentUser):
-    initialAirportIndex = randint(1, 70942)
-    randomMoney         = [0, 100, 200, -100, -200]
-    money               = 2000
-    totalDstnc          = 0
-    airportCount        = 0
 
-    currentAirport = initialAirport = DBcall("SELECT name, latitude_deg, longitude_deg FROM airport;")[0][initialAirportIndex]
-
-    while money > 0:
-        print("You are at:", currentAirport[0])
-        print("Money left: ", int(money))
-        print(f"Distance traveled so far: {totalDstnc:.2f}km")
-
-        closestAirports(currentAirport)
-        airportCount += 1
-
-        prevAirport        = (currentAirport[1], currentAirport[2])
-        currentAirportName = input("\nCopy and paste the airport you want to go to >> ")
-        currentAirport     = DBcall(f"SELECT name, latitude_deg, longitude_deg FROM airport WHERE name = '{currentAirportName}';")[0][0]
-
-        dstnc = distance.distance(prevAirport, (currentAirport[1], currentAirport[2])).km
-        moneyChange = randomMoney[randint(0, 4)]
-
-        money = money - (dstnc * 50) + moneyChange
-        totalDstnc += dstnc
-
-        if(money < 0):
+def getClosestAirports(latitude, longitude, pastAirports):
+    allAirports = DBcall("SELECT name, ident, latitude_deg, longitude_deg, home_link, wikipedia_link, type FROM airport;")[0]
+    results = {'airports': []}
+    i = 0
+    for airport in allAirports:
+        if i > 10:
             break
 
+        if (airport[0] in pastAirports) or (airport[6] == 'closed') or (airport[6] == 'balloonport') or (airport[6] == 'heliport'):
+            continue
 
-        if moneyChange > 0:
-            print("\nMoney gained: ", moneyChange)
+        dstnc = distance.distance((airport[2], airport[3]), (latitude, longitude)).km
 
-        elif moneyChange < 0:
-            print("\nMoney lost: ", moneyChange)
+        if dstnc < 200:
+            airportJson = {'name': airport[0], 'ICAO': airport[1], 'latitude': airport[2], 'longitude': airport[3],
+             'home_link': airport[4], 'wiki_link': airport[5], 'dstnc': dstnc, 'type': airport[6]}
 
-        else:
-            print("\nNo loss and no Gain!")
+            i += 1
+            results['airports'].append(airportJson)
+
+    return results
 
 
-    print("\nGAMEOVER (Unfortunately you ran out of money)\n"
-          "Your game statistics:")
+def getInitialAirport():
+    initialAirportIndex = randint(0, 70941)
+    airport = DBcall("SELECT name, ident, latitude_deg, longitude_deg, home_link, wikipedia_link, type FROM airport;")[0][initialAirportIndex]
 
-    print(f"Distance traveled: {totalDstnc:.2f} kilometers,\n"
-          f"Amount of Airports visited: {airportCount}")
-
-    updated = saveGame(totalDstnc, currentUser, airportCount, initialAirport[0])
-
-    if updated:
-        return True
-    else:
-        return False
+    return {'name': airport[0], 'ICAO': airport[1], 'latitude': airport[2], 'longitude': airport[3], 'home_link': airport[4], 'wiki_link': airport[5], 'type': airport[6]}

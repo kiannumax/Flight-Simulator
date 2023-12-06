@@ -14,6 +14,7 @@ async function login() {
     } finally {
         if (data['result']) {
             localStorage.setItem('token', data['token']);
+            localStorage.setItem('gameInMiddle', 0);
             window.open('http://localhost:63342/FSgame/templates/home.html', '_self');
         } else {
             document.getElementById('resetButton').className = 'wrongCredentials';

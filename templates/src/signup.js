@@ -26,6 +26,7 @@ async function signup(username, password) {
      } finally {
         if (data['success']) {
             localStorage.setItem('token', data['token']);
+            localStorage.setItem('gameInMiddle', 0)
             window.open('http://localhost:63342/FSgame/templates/home.html', '_self');
         } else {
             alert(data['message']);

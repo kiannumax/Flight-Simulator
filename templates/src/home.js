@@ -1,10 +1,19 @@
 'use strict';
 
 function signout() {
-    const decision = confirm("Are you sure?");
+    const gameInMiddle = localStorage.getItem('gameInMiddle');
+    let message = "Are you sure you want to sign out?";
+
+    if (gameInMiddle == '1') {
+        message += " The progress of your current game will be lost!"
+    }
+
+    const decision = confirm(message);
 
     if (decision) {
         localStorage.removeItem('token');
+        localStorage.removeItem('gameInMiddle');
+        localStorage.removeItem('gameData');
         window.open('http://localhost:63342/FSgame/templates/home.html', '_self');
     }
 }
@@ -22,6 +31,11 @@ function signedIn() {
     button.innerText = "Sign Out";
     button.addEventListener('click', signout);
     nav.appendChild(button)
+
+    if (localStorage.getItem('gameInMiddle') == '1') {
+        document.getElementById('gameState').innerText = "You have an unfinished game!";
+        document.getElementById('gameStateButton').innerText = "Continue";
+    }
 }
 
 
@@ -61,7 +75,7 @@ async function globalLeaderboard() {
     }
 }
 
-document.getElementById('gameStart').addEventListener('click', () => {
+document.getElementById('gameStateButton').addEventListener('click', () => {
     window.open('http://localhost:63342/FSgame/templates/game.html', '_self');
 });
 
