@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <title>Profile</title>
     <script src="src/profile.js" defer></script>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="home.html" class="logo">Air Dominance</a>
+            <h1><a href="home.html" class="logo">Air Dominance</a></h1>
             <button id="signout">Sign out</button>
         </nav>
     </header>
     <main>
-        <button id="changeUsername">Change username</button>
-        <button id="changePassword">Change password</button>
-        <div id="playerInfo">
+        <section id="userOptions">
+            <button id="changeUsername">Change username</button>
+            <button id="changePassword">Change password</button>
+        </section>
+        <section id="playerInfo">
             <p id="playerData"></p>
-            <h4>ALl of your past games:</h4>
-        </div>
+            <h4>All of your past games:</h4>
+        </section>
     </main>
     <footer>
-        Contact Us info (our linkedins and github profile for example)
+        <address>
+            Contact Us info (our LinkedIns and GitHub profiles, for example)
+        </address>
     </footer>
 </body>
 </html>
