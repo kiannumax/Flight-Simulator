@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <script src="src/home.js" defer></script>
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
     <header>
-        <nav id="homeNav">
-            <a href="home.html">Air Dominance</a>
+        <nav>
+            <h1><a href="home.html">Air Dominance</a></h1>
         </nav>
     </header>
+
     <main>
-         <div id="notSigned">
-            <p>About the game, encouragament to login/sign up</p>
-             <a href="login.html">Sign in</a>
-        </div>
-        <div id="signedIn">
-            <p id="gameState">Start the game</p>
-            <button id="gameStateButton">Start</button>
-        </div>
-        <div>
-            <p>Game rules</p>
-        </div>
-        <h2>Global Leaderboard</h2>
-        <div id="globalLeaderboard">
-        </div>
+        <section id="notSigned">
+            <article>
+                <p>About the game, encouragement to login/sign up</p>
+                <a href="login.html">Sign in</a>
+            </article>
+        </section>
+
+        <section id="signedIn">
+            <article>
+                <p id="gameState">Start the game</p>
+                <button id="gameStateButton">Start</button>
+            </article>
+        </section>
+
+        <section id="gameRules">
+            <article>
+                <p>Game rules</p>
+            </article>
+        </section>
+
+        <section id="leaderboard">
+            <h2>Global Leaderboard</h2>
+            <article id="globalLeaderboard"></article>
+        </section>
     </main>
+
     <footer>
-        Contact Us info (our linkedins and github profile for example)
+        <address>
+            Contact Us info (our LinkedIns and GitHub profiles, for example)
+        </address>
     </footer>
 </body>
 </html>
