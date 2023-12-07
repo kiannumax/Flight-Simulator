@@ -4,28 +4,37 @@
     <meta charset="UTF-8">
     <title>Sign up</title>
     <script src="src/signup.js" defer></script>
-    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="../css/signup.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="home.html">Air Dominance</a>
+            <h1><a href="home.html">Air Dominance</a></h1>
         </nav>
     </header>
     <main>
-        <div>
-            <form id="signup">
-              <input id="username" type="text" placeholder="Create a Username (max 15 characters)">
-              <input id="password" type="password" placeholder="Create a password">
-              <input id="password2" type="password" placeholder="Type the password again">
-              <input type="submit">
-            </form>
-            <p id="warning" class="hide">Username or password is entered incorrectly, please try again!</p>
+        <section id="signupSection">
+            <article>
+                <form id="signupForm">
+                    <label for="username">Create a Username (max 15 characters)</label>
+                    <input id="username" type="text" placeholder="Enter your username" required>
 
-        </div>
+                    <label for="password">Create a password</label>
+                    <input id="password" type="password" placeholder="Enter your password" required>
+
+                    <label for="password2">Type the password again</label>
+                    <input id="password2" type="password" placeholder="Re-enter your password" required>
+
+                    <input type="submit" value="Sign Up">
+                </form>
+                <p id="warning" class="hide">Username or password is entered incorrectly, please try again!</p>
+            </article>
+        </section>
     </main>
     <footer>
-        Contact Us info (our linkedins and github profiles for example)
+        <address>
+            Contact Us info (our LinkedIns and GitHub profiles, for example)
+        </address>
     </footer>
 </body>
 </html>
