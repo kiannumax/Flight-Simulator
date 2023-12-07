@@ -1,53 +1,39 @@
-/* Reset some default styles */
-body, h1, h2, p, ul, li {
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
 }
 
-/* Set a background color for the body */
-body {
-    background-color: #ffcab0;
-    font-family: Arial, sans-serif;
-}
-
-/* Header styles */
 header {
-    background-color: #c24d2c;
-    color: #d9dad7;
-    padding: 15px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
     text-align: center;
-    height: 25px;
 }
 
-.logo {
-    margin-bottom: 12px;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav a {
-    color: #fff;
+nav h1 a {
     text-decoration: none;
-    font-weight: bold;
-}
-
-#signout {
-    background-color: #e74c3c;
     color: #fff;
-    padding: 8px 15px;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#signout:hover {
-    background-color: #c0392b;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Main content styles */
 main {
     max-width: 800px;
     margin: 20px auto;
@@ -56,43 +42,25 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer styles */
+section {
+    margin-bottom: 20px;
+}
+
+article {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
 footer {
+    text-align: center;
+    padding: 10px;
     background-color: #333;
     color: #fff;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
-/* Game content styles */
-main div {
-    /* Add styles for the game content */
-}
-
-#loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-}
-
-.loading {
-    display: block;
-    animation: spin 2s linear infinite;
-}
-
-.stopLoading {
-    animation: none;
-    display: none;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+address {
+    font-style: normal;
 }
 
 /* Responsive styles */
@@ -102,4 +70,6 @@ main div {
     }
 }
 
-
+a:hover {
+    color: #FFD700;
+}
