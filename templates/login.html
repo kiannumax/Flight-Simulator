@@ -7,34 +7,37 @@
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h1><a href="home.html">Air Dominance</a></h1>
-        </nav>
-    </header>
-    <main>
-        <section id="loginSection">
-            <article>
-                <form id="loginForm">
-                    <label for="username">Username</label>
-                    <input id="username" type="text" placeholder="Enter your username">
+<header>
+    <nav>
+        <h1><a href="home.html">Air Dominance</a></h1>
+    </nav>
+</header>
+<main>
+    <section id="loginSection">
+        <article>
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input id="username" type="text" placeholder="Enter your username">
 
-                    <label for="password">Password</label>
-                    <input id="password" type="password" placeholder="Enter your password">
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter your password">
 
-                    <input type="submit" value="Log In">
-                </form>
+                <input type="submit" value="Log In">
+            </form>
+            <p id="resetPasswordMessage" class="rightCredentials">Username or password is entered incorrectly, please
+                try again!</p>
 
-                <p id="resetPasswordMessage" class="rightCredentials">Username or password is entered incorrectly, please try again!</p>
-                <button id="resetButton" class="rightCredentials">Reset Password</button>
-            </article>
-        </section>
+        </article>
+    </section>
+    <div class="fail">
+        <button id="resetButton" class="rightCredentials">Reset Password</button>
         <p>New user? <a href="signup.html">Sign up</a></p>
-    </main>
-    <footer>
-        <address>
-            Contact Us info (our LinkedIns and GitHub profiles, for example)
-        </address>
-    </footer>
+    </div>
+</main>
+<footer>
+    <address>
+        Contact Us info (our LinkedIns and GitHub profiles, for example)
+    </address>
+</footer>
 </body>
 </html>
