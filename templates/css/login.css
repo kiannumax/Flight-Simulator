@@ -68,7 +68,7 @@ input[type="submit"]:hover {
 }
 
 p.rightCredentials {
-    text-align: right;
+    text-align: center;
 }
 
 button.rightCredentials {
@@ -103,6 +103,17 @@ address {
     }
 }
 
+p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
 a:hover {
     color: #FFD700;
+}
+
+div {
+    display: flex;
+    justify-content: space-around;
 }
