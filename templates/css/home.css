@@ -1,7 +1,8 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Rubik', sans-serif;
     margin: 0;
     padding: 0;
+    font-weight: 400;
     background-color: #f8f8f8;
     color: #333;
 }
@@ -63,6 +64,8 @@ button:hover {
 
 h2 {
     color: #333;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 footer {
