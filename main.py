@@ -16,7 +16,7 @@ from backend.user.changeUserData import resetPassword
 app = Flask(__name__)  # Initialize python Flask app
 CORS(app)  # To prevent Access-Control-Request errors
 
-
+# Sign Up API Handler
 @app.route('/signup/<username>/<password>/<IP>')
 def signUp(username, password, IP):
     return signup(username, password, IP)
@@ -41,7 +41,7 @@ def ipCheck(username, ip):
 def passwordReset(username, newPassword):
     return resetPassword(username, newPassword)
 
-# Login API handler
+# Login API Handler
 @app.route('/login/<username>/<password>', methods=['GET'])
 def doLogin(username, password):
     return login(username, password)

@@ -1,6 +1,7 @@
 'use strict';
 
-import {openAlert, openPrompt} from "./customPopups.js"; // Import custom Alert and Prompt functions
+import { openAlert, openPrompt } from "./customPopups.js"; // Import custom Alert and Prompt functions
+import { getIP } from "./getIP.js";  // Import function which return user's public IP
 
 
 async function login() {
@@ -23,7 +24,7 @@ async function login() {
         if (data['result']) { // If login credentials entered correctly
             localStorage.setItem('token', data['token']);
             // Store user's token in local Storage to let know the app that user is logged in
-            localStorage.setItem('gameInMiddle', '0'); // Initialize other user data about game state
+            localStorage.setItem('gameInMiddle', '0');  // Initialize other user data about game state
             window.open('http://localhost:63342/FSgame/templates/home.html', '_self'); // Move to Home page
 
         } else { // If credentials entered wrong, show message and button with reset password feature
@@ -83,20 +84,6 @@ async function checkIP() {
             await openAlert(data['message']);
             window.open('http://localhost:63342/FSgame/templates/login.html', '_self');
         }
-    }
-}
-
-
-async function getIP() {
-    try {  // Fetch data from public API which returns current public IP of a user
-        const response = await fetch("https://api.ipify.org/?format=json");
-        var data = await response.json();
-
-    } catch(e) {  // Show error in console, more useful for developing state
-        console.log("An Error occurred: " + e);
-
-    } finally {
-        return data['ip'];  // Return user's public IP
     }
 }
 

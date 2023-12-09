@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign up</title>
-    <script src="src/signup.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Rubik:wght@400;500;600;700&family=Sono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="css/customPopups.css" rel="stylesheet">
     <link rel="stylesheet" href="css/signup.css">
+    <script type="module" src="src/signup.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
-            <h1><a href="home.html">Air Dominance</a></h1>
+            <h1><a href="home.html">Air<i id="title">Dominance</i></a></h1>
         </nav>
     </header>
     <main>
-        <section id="signupSection">
+        <section>
             <article>
                 <form id="signupForm">
                     <label for="username">Create a Username (max 15 characters)</label>
                     <input id="username" type="text" placeholder="Enter your username" required>
 
-                    <label for="password">Create a password</label>
+                    <label for="password">Create a Password</label>
                     <input id="password" type="password" placeholder="Enter your password" required>
 
-                    <label for="password2">Type the password again</label>
+                    <label for="password2">Type the Password again</label>
                     <input id="password2" type="password" placeholder="Re-enter your password" required>
 
                     <input type="submit" value="Sign Up">
                 </form>
-                <p id="warning" class="hide">Username or password is entered incorrectly, please try again!</p>
+                <p id="warning" class="hide"></p>
             </article>
         </section>
     </main>
     <footer>
         <address>
-            Group 9
-            Max Kiannu <a href="https://github.com/kiannumax">Github</a> <a href="https://www.linkedin.com/in/kiannumax/">LinkedIn</a>
-            Chris Otewa <a href="https://github.com/ChrisOtewa">Github</a> <a href="https://www.linkedin.com/in/chrisotewa/">LinkedIn</a>
-            Sachin Bhandari <a href="https://github.com/5achinBhandari">Github</a> <a href="https://www.linkedin.com/in/54ch1nb/">LinkedIn</a>
-            Mahinur Rahman <a href="https://github.com/Mahinur-Rahman">Github</a> <a href="https://www.linkedin.com/in/mahinur-rahman-313337198/">LinkedIn</a>
+            <h4>Group 9</h4>
+
+            <p>Max Kiannu <a href="https://github.com/kiannumax" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/kiannumax/" target="_blank">LinkedIn</a></p>
+            <p>Chris Otewa <a href="https://github.com/ChrisOtewa" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/chrisotewa/" target="_blank">LinkedIn</a></p>
+            <p>Sachin Bhandari <a href="https://github.com/5achinBhandari" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/54ch1nb/" target="_blank">LinkedIn</a></p>
+            <p>Mahinur Rahman <a href="https://github.com/Mahinur-Rahman" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/mahinur-rahman-313337198/" target="_blank">LinkedIn</a></p>
         </address>
     </footer>
 </body>
