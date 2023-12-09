@@ -54,7 +54,7 @@ function checkCredentials() {
     }
 }
 
-document.getElementById('signup').addEventListener('submit', (evt) => {
+document.getElementById('signupForm').addEventListener('submit', (evt) => {
     evt.preventDefault()
     checkCredentials()
 });

@@ -75,8 +75,10 @@ async function profileData() {
                Date played: ${new Date(game['date_played']).toLocaleString().replaceAll('/', '.').split(',')[0]}`
 
                const li = document.createElement('li');
+               li.className = 'pastGamesLi';
                const p = document.createElement('p');
                p.innerText = string;
+               p.className = 'pastGamesP';
 
                li.appendChild(p);
                list.appendChild(li);

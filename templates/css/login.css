@@ -1,26 +1,45 @@
+/*Overwriting default <a> styling preferences*/
+a {
+    color: #0056b3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover, #title:hover, nav h1 a:hover #title {
+    color: #FFD700;
+}
+
+
+/*Header styling*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+nav h1 a {
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+nav h1 i {
+    color: lightskyblue;
+    transition: color 0.3s;
+}
+
+
+/*Main section styling*/
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f8f8;
     color: #333;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-nav h1 a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5em;
-    transition: color 0.3s;
-}
-
 main {
+    font-family: 'Roboto Slab', serif;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -28,11 +47,7 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-section {
-    margin-bottom: 20px;
-}
-
-article {
+section article {
     padding: 20px;
     border-radius: 8px;
     background-color: #f9f9f9;
@@ -45,16 +60,16 @@ form {
     margin: 0 auto;
 }
 
-label {
+form label {
     margin-bottom: 8px;
 }
 
-input {
+form input {
     padding: 10px;
     margin-bottom: 16px;
 }
 
-input[type="submit"] {
+form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -63,57 +78,66 @@ input[type="submit"] {
     transition: background-color 0.3s;
 }
 
-input[type="submit"]:hover {
+form input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-p.rightCredentials {
-    text-align: center;
+main p {
+    display: flex;
+    justify-content: center;
+}
+/*Initial styling, hidden div*/
+.rightCredentials {
+     display: none;
+}
+/*If credentials entered wrong */
+.wrongCredentials {
+    display: block;
 }
 
-button.rightCredentials {
-    background-color: #007bff;
+article div p {
+    color: crimson;
+}
+
+article div button {
+    background-color: crimson;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 5px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    margin: auto;
 }
 
-button.rightCredentials:hover {
-    background-color: #0056b3;
+article div button:hover {
+    background-color: brown;
 }
 
+
+/*Footer styling*/
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     background-color: #333;
     color: #fff;
 }
 
 address {
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
-    main {
-        padding: 10px;
-    }
+footer address h4 {
+    margin: 10px 0 0 0;
 }
 
-p {
-    text-align: center;
-    display: flex;
-    justify-content: center;
+footer address p {
+    display: inline-grid;
+    padding: 0 10px 0 10px;
 }
 
-a:hover {
-    color: #FFD700;
-}
-
-div {
-    display: flex;
-    justify-content: space-around;
+footer address a {
+    color: lightskyblue;
 }

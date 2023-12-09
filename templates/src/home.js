@@ -59,8 +59,10 @@ async function globalLeaderboard() {
                Date played: ${new Date(data['date_played'][i]).toLocaleString().replaceAll('/', '.').split(',')[0]}`
 
                const li = document.createElement('li');
+               li.className = 'leaderboardLi';
                const p = document.createElement('p');
                p.innerText = string;
+               p.className = 'leaderboardP';
 
                li.appendChild(p);
                list.appendChild(li);

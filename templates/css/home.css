@@ -38,6 +38,14 @@ article {
     background-color: #f9f9f9;
 }
 
+.absent {
+    display: none;
+}
+
+.leaderboardLi {
+
+}
+
 a {
     text-decoration: none;
     color: #007bff;

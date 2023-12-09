@@ -1,6 +1,5 @@
-from flask import Flask, Response
+from flask import Flask
 from flask_cors import CORS
-import json
 
 from backend.leaderboard import showLeaderboard
 from backend.game.game import getInitialAirport
@@ -14,12 +13,12 @@ from backend.user.changeUserData import changePassword
 from backend.user.changeUserData import checkIP
 from backend.user.changeUserData import resetPassword
 
-app = Flask(__name__)
-CORS(app)
+app = Flask(__name__)  # Initialize python Flask app
+CORS(app)  # To prevent Access-Control-Request errors
 
 
 @app.route('/signup/<username>/<password>/<IP>')
-def signUP(username, password, IP):
+def signUp(username, password, IP):
     return signup(username, password, IP)
 
 
@@ -32,25 +31,25 @@ def usernameChange(token, newUsername):
 def passwordChange(token, newPassword):
     return changePassword(token, newPassword)
 
+# Checking of IP API Handler
+@app.route('/checkIP/<username>/<ip>', methods=['GET'])
+def ipCheck(username, ip):
+    return checkIP(username, ip)
 
-@app.route('/checkIP/<username>/<IP>', methods=['GET'])
-def IPcheck(username, IP):
-    return checkIP(username, IP)
-
-
+# Resetting of password API Handler
 @app.route('/resetPassword/<username>/<newPassword>', methods=['GET'])
 def passwordReset(username, newPassword):
     return resetPassword(username, newPassword)
+
+# Login API handler
+@app.route('/login/<username>/<password>', methods=['GET'])
+def doLogin(username, password):
+    return login(username, password)
 
 
 @app.route('/playerInfo/<token>', methods=['GET'])
 def getProfileData(token):
     return profileData(token)
-
-
-@app.route('/login/<username>/<password>', methods=['GET'])
-def doLogin(username, password):
-    return login(username, password)
 
 
 @app.route('/globalLeaderboard', methods=['GET'])
@@ -73,6 +72,6 @@ def gameSave(distance, token, airportCount, initialAirport):
     return saveGame(distance, token, airportCount, initialAirport)
 
 
-
+# Python Flask server start
 if __name__ == '__main__':
     app.run(use_reloader=True, host='127.0.0.1', port=5000)
