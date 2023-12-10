@@ -21,12 +21,12 @@ CORS(app)  # To prevent Access-Control-Request errors
 def signUp(username, password, IP):
     return signup(username, password, IP)
 
-
+# Change Username API Handler
 @app.route('/changeUsername/<token>/<newUsername>', methods=['GET'])
 def usernameChange(token, newUsername):
     return changeUsername(token, newUsername)
 
-
+# Change Password API Handler
 @app.route('/changePassword/<token>/<newPassword>', methods=['GET'])
 def passwordChange(token, newPassword):
     return changePassword(token, newPassword)
@@ -46,7 +46,7 @@ def passwordReset(username, newPassword):
 def doLogin(username, password):
     return login(username, password)
 
-
+# PlayerInfo API Handler
 @app.route('/playerInfo/<token>', methods=['GET'])
 def getProfileData(token):
     return profileData(token)

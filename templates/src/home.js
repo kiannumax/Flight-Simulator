@@ -1,28 +1,6 @@
 'use strict';
 
-import { openConfirm } from "./customPopups.js";  // Import a custom Confirm popup function
-
-
-async function signout() {
-    const gameInMiddle = localStorage.getItem('gameInMiddle');
-    let message = "Are you sure you want to sign out?";
-    // If user has a game in the middle, add that information to Confirm message
-    if (gameInMiddle == '1') {
-        message += " The progress of your current game will be lost!";
-    }
-
-    try {
-        var decision = await openConfirm(message);  // Call a custom Confirm popup
-
-    } finally {
-        if (decision) {  // If answered yes, remove all data from localStorage and open a Home page
-            localStorage.removeItem('token');
-            localStorage.removeItem('gameInMiddle');
-            localStorage.removeItem('gameData');
-            window.open('http://localhost:63342/FSgame/templates/home.html', '_self');
-       }
-    }
-}
+import { signout } from "./sharedFunctions.js";  // Import a custom Confirm popup function
 
 
 async function globalLeaderboard() {

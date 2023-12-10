@@ -1,6 +1,6 @@
 'use strict';
 
-import { getIP } from "./getIP.js";  // Import function which return user's public IP
+import { getIP } from "./sharedFunctions.js";  // Import function which return user's public IP
 import { openAlert } from "./customPopups.js";  // Import custom Alert
 
 

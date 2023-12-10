@@ -3,33 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <script src="src/profile.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Rubik:wght@400;500;600;700&family=Sono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/customPopups.css">
     <link rel="stylesheet" href="css/profile.css">
+    <script type="module" src="src/profile.js" defer></script>
 </head>
 <body>
     <header>
         <nav>
-            <h1><a href="home.html" class="logo">Air Dominance</a></h1>
+            <h1><a href="home.html">Air<i id="title">Dominance</i></a></h1>
             <button id="signout">Sign out</button>
         </nav>
     </header>
     <main>
-        <section id="userOptions">
-            <button id="changeUsername">Change username</button>
-            <button id="changePassword">Change password</button>
+        <section>
+            <article>
+                <button id="changeUsername">Change username</button>
+                <button id="changePassword">Change password</button>
+                <p id="playerData"></p>
+            </article>
         </section>
-        <section id="playerInfo">
-            <p id="playerData"></p>
-            <h4>All of your past games:</h4>
+        <section>
+            <h2>All of your past games</h2>
+
+            <article id="playerGames"></article>
         </section>
     </main>
     <footer>
         <address>
-            Group 9
-            Max Kiannu <a href="https://github.com/kiannumax">Github</a> <a href="https://www.linkedin.com/in/kiannumax/">LinkedIn</a>
-            Chris Otewa <a href="https://github.com/ChrisOtewa">Github</a> <a href="https://www.linkedin.com/in/chrisotewa/">LinkedIn</a>
-            Sachin Bhandari <a href="https://github.com/5achinBhandari">Github</a> <a href="https://www.linkedin.com/in/54ch1nb/">LinkedIn</a>
-            Mahinur Rahman <a href="https://github.com/Mahinur-Rahman">Github</a> <a href="https://www.linkedin.com/in/mahinur-rahman-313337198/">LinkedIn</a>
+            <h4>Group 9</h4>
+
+            <p>Max Kiannu <a href="https://github.com/kiannumax" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/kiannumax/" target="_blank">LinkedIn</a></p>
+            <p>Chris Otewa <a href="https://github.com/ChrisOtewa" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/chrisotewa/" target="_blank">LinkedIn</a></p>
+            <p>Sachin Bhandari <a href="https://github.com/5achinBhandari" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/54ch1nb/" target="_blank">LinkedIn</a></p>
+            <p>Mahinur Rahman <a href="https://github.com/Mahinur-Rahman" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/mahinur-rahman-313337198/" target="_blank">LinkedIn</a></p>
         </address>
     </footer>
 </body>

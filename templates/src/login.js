@@ -1,7 +1,7 @@
 'use strict';
 
 import { openAlert, openPrompt } from "./customPopups.js"; // Import custom Alert and Prompt functions
-import { getIP } from "./getIP.js";  // Import function which return user's public IP
+import { getIP } from "./sharedFunctions.js";  // Import function which return user's public IP
 
 
 async function login() {

@@ -1,23 +1,12 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-nav h1 a {
+/*Overwriting default <a> and <button> styling preferences*/
+a {
+    color: #0056b3;
     text-decoration: none;
-    color: #fff;
-    font-size: 1.5em;
     transition: color 0.3s;
+}
+
+a:hover, #title:hover, nav h1 a:hover #title {
+    color: #FFD700;
 }
 
 button {
@@ -30,53 +19,108 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #0056b3;
+
+/*Header styling*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+nav h1 a {
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+nav h1 i {
+    color: lightskyblue;
+    transition: color 0.3s;
+}
+
+nav button {
+    background-color: crimson;
+}
+
+nav button:hover {
+    background-color: brown;
+}
+
+
+/*Main section styling*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
 }
 
 main {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 400;
     max-width: 800px;
-    margin: 20px auto 40px;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#userOptions {
-    display: flex;
-    justify-content: space-around;
+section article {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-h4 {
-    margin-top: 10px;
+article p {
+    font-family: 'Dhurjati', sans-serif;
+    font-size: larger;
 }
 
+section button {
+    margin: auto;
+    display: inline-block;
+}
+
+section button:hover {
+    background-color: #0056b3;
+}
+
+section h2 {
+    color: #333;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+article li {
+    border: 2px dashed black;
+}
+
+
+/*Footer styling*/
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     background-color: #333;
     color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 address {
+    font-family: 'Rubik', sans-serif;
     font-style: normal;
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
-    main {
-        padding: 10px;
-    }
-
-    #userOptions {
-        flex-direction: column;
-        align-items: center;
-    }
+footer address h4 {
+    margin: 10px 0 0 0;
 }
 
-a:hover {
-    color: #FFD700;
+footer address p {
+    display: inline-grid;
+    padding: 0 10px 0 10px;
+}
+
+footer address a {
+    color: lightskyblue;
 }

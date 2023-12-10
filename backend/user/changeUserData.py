@@ -4,14 +4,15 @@ from .hash import hashPassword
 
 def changeUsername(token, newUsername):
     insertQuery = f"""UPDATE users SET username = "{newUsername}" where id = '{token}'"""
-
+    # Update user's username, return True if the amount of modified rows is 1, False otherwise
     return {'success': DBcall(insertQuery)[1] == 1}
 
 
 def changePassword(token, newPassword):
-    hashedPaswd = hashPassword(newPassword)
-    insertQuery = f"""UPDATE users SET password = "{hashedPaswd}" where id = '{token}'"""
+    hashedPassword = hashPassword(newPassword)  # Hash the new password
 
+    insertQuery = f"""UPDATE users SET password = "{hashedPassword}" where id = '{token}'"""
+    # Update user's password, return True if the amount of modified rows is 1, False otherwise
     return {'success': DBcall(insertQuery)[1] == 1}
 
 

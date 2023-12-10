@@ -37,7 +37,7 @@ export function openPrompt(message, type) {
         const input = document.createElement('input');
         input.id = 'resetUsername'; // Create input tag
         input.type = type; // Determine its type from attribute (text/password)
-        input.placeholder = 'Enter your username';
+        input.placeholder = `Enter your ${type == 'text' ? "username" : "password"}`;
         promptBox.appendChild(input);
 
         const promptClose = document.createElement("button");
