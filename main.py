@@ -51,7 +51,7 @@ def doLogin(username, password):
 def getProfileData(token):
     return profileData(token)
 
-
+# Global Leaderboard API Handler
 @app.route('/globalLeaderboard', methods=['GET'])
 def showGlobalLeaderboard():
     return showLeaderboard()

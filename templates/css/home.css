@@ -1,58 +1,11 @@
-body {
-    font-family: 'Rubik', sans-serif;
-    margin: 0;
-    padding: 0;
-    font-weight: 400;
-    background-color: #f8f8f8;
-    color: #333;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-nav h1 a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5em;
-}
-
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-article {
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.absent {
-    display: none;
-}
-
-.leaderboardLi {
-
-}
-
+/*Overwriting default <a> and <button> styling preferences*/
 a {
+    color: #0056b3;
     text-decoration: none;
-    color: #007bff;
     transition: color 0.3s;
 }
 
-a:hover {
+a:hover, #title:hover, nav h1 a:hover #title {
     color: #FFD700;
 }
 
@@ -66,26 +19,137 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+
+/*Header styling*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+nav a {
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+    margin-right: 40px;
+}
+
+nav h1 a {
+    margin-right: 0;
+}
+
+nav h1 i {
+    color: lightskyblue;
+    transition: color 0.3s;
+}
+
+nav button {
+    background-color: crimson;
+    margin-left: 40px;
+}
+
+nav button:hover {
+    background-color: brown;
+}
+
+
+/*Main section styling*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+main {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section article {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+article p {
+    font-family: 'Dhurjati', sans-serif;
+    font-size: larger;
+}
+
+article a {
+    display: table;
+    margin: auto;
+}
+/*Class for articles that should not be shown */
+.absent {
+    display: none;
+}
+
+section button {
+    background-color: #007bff;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+section button:hover {
     background-color: #0056b3;
 }
 
-h2 {
+section h2 {
     color: #333;
     font-weight: 700;
     letter-spacing: -0.5px;
 }
+/*Global Leaderboard styling*/
+article li {
+    border: 2px dashed black;
+}
 
+.first {
+    background-color: gold;
+}
+
+.second {
+    background-color: silver;
+}
+
+.third {
+    background-color: rgb(205, 127, 50);
+}
+
+
+/*Footer styling*/
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     background-color: #333;
     color: #fff;
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
-    main {
-        padding: 10px;
-    }
+address {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+}
+
+footer address h4 {
+    margin: 10px 0 0 0;
+}
+
+footer address p {
+    display: inline-grid;
+    padding: 0 10px 0 10px;
+}
+
+footer address a {
+    color: lightskyblue;
 }

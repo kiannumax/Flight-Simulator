@@ -2,57 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/home.css">
-    <script src="src/home.js" defer></script>
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Rubik:wght@400;500;600;700&family=Sono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/customPopups.css">
+    <link rel="stylesheet" href="css/home.css">
+    <script type="module" src="src/home.js" defer></script>
 </head>
 <body>
-<header>
-    <nav id="homeNav">
-        <h1><a href="home.html">Air Dominance</a></h1>
-    </nav>
-</header>
+    <header>
+        <nav id="homeNav">
+            <h1><a href="home.html">Air<i id="title">Dominance</i></a></h1>
+        </nav>
+    </header>
+    <main>
+        <section id="notSigned">
+            <article>
+                <p>Have you ever had a feeling to try yourself as a world explorer? If you did, then you would enjoy our
+                    game called Air Dominance! You get to be a real airport explorer, but with some obstacles on the way,
+                    of course. Game starts with you waking up in a random airport out of the all airports around the
+                    world. Having 2000$ in the pocket, you have to travel the furthest distance from starting point.
+                    After arriving at a new airport you will have a chance of losing or gaining money, depending on the
+                    sustainability rating of the airport. That’s why you should take into account the effect on the environment
+                    when you achieve the goal of maximum traveled distance. Sounds exciting? Want to beat the records and be
+                    number 1 on the Global Leaderboard? Go ahead, and log in into the system or create a new account! </p>
 
-<main>
-    <section id="notSigned">
-        <article>
-            <p>In the game Air Dominance, the main character an explorer, wakes up at an airport with nothing but a
-                flight with $2000 to buy fuel. The explorer must travel to different airports and scavenge and collect
-                money from airports while avoiding airports that could have thieves. The airports that are occupied by
-                thieves could lead to loss of money. The end goal of the explorer is to explore as much as possible and
-                visit as many airports as possible. All this excitement is encapsulated into a single game that also
-                consists of a leader board for the players to compare their scores and be the best explorer. </p>
-            <a href="login.html">Sign in</a>
-        </article>
-    </section>
+                <a href="login.html">Sign in</a>
+            </article>
+        </section>
+        <section id="signedIn">
+            <article>
+                <p id="gameState">Start a new game!</p>
+                <button id="gameStateButton">Start</button>
+            </article>
+        </section>
+        <section>
+            <h2>Game rules</h2>
 
-    <section id="signedIn">
-        <article>
-            <p id="gameState">Start the game</p>
-            <button id="gameStateButton">Start</button>
-        </article>
-    </section>
+            <article>
+                <p>You wake up in a random airport with 2000$. Maximum of 10 of the nearest airports to your location
+                    are getting shown, and you get to choose one of them as your next location. Your money decreases
+                    according to the distance to the chosen airport. Also, depending on a new airport type and therefore
+                    its sustainability rating, you have of chance of keeping, losing, or gaining money. Then the new 10
+                    airports are getting shown, once again. This cycle continues until you run out of money. Each finished
+                    game gets saved to your profile, and your best game gets to be in the Global Leaderboard!</p>
+            </article>
+        </section>
+        <section>
+            <h2>Global Leaderboard</h2>
 
-    <section id="gameRules">
-        <article>
-            <p>Game rules</p>
-        </article>
-    </section>
+            <article id="globalLeaderboard"></article>
+        </section>
+    </main>
+    <footer>
+        <address>
+            <h4>Group 9</h4>
 
-    <section id="leaderboard">
-        <h2>Global Leaderboard</h2>
-        <article id="globalLeaderboard"></article>
-    </section>
-</main>
-
-<footer>
-    <address>
-        Group 9
-        Max Kiannu <a href="https://github.com/kiannumax">Github</a> <a href="https://www.linkedin.com/in/kiannumax/">LinkedIn</a>
-        Chris Otewa <a href="https://github.com/ChrisOtewa">Github</a> <a href="https://www.linkedin.com/in/chrisotewa/">LinkedIn</a>
-        Sachin Bhandari <a href="https://github.com/5achinBhandari">Github</a> <a href="https://www.linkedin.com/in/54ch1nb/">LinkedIn</a>
-        Mahinur Rahman <a href="https://github.com/Mahinur-Rahman">Github</a> <a href="https://www.linkedin.com/in/mahinur-rahman-313337198/">LinkedIn</a>
-    </address>
-</footer>
+            <p>Max Kiannu <a href="https://github.com/kiannumax" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/kiannumax/" target="_blank">LinkedIn</a></p>
+            <p>Chris Otewa <a href="https://github.com/ChrisOtewa" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/chrisotewa/" target="_blank">LinkedIn</a></p>
+            <p>Sachin Bhandari <a href="https://github.com/5achinBhandari" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/54ch1nb/" target="_blank">LinkedIn</a></p>
+            <p>Mahinur Rahman <a href="https://github.com/Mahinur-Rahman" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/mahinur-rahman-313337198/" target="_blank">LinkedIn</a></p>
+        </address>
+    </footer>
 </body>
 </html>

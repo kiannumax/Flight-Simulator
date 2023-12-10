@@ -42,7 +42,7 @@ export function openPrompt(message, type) {
 
         const promptClose = document.createElement("button");
         promptClose.className = 'popupButton'; // Create a button which closes the Prompt
-        promptClose.id = 'promptClose';
+        promptClose.id = 'close';
         promptClose.innerText = "Close";
         promptBox.appendChild(promptClose);
 
@@ -62,5 +62,42 @@ export function openPrompt(message, type) {
         };
 
         document.body.appendChild(promptBox); // Show the Prompt popup
+    });
+}
+
+
+// Function creating a custom Confirm popup
+export function openConfirm(message) {
+    return new Promise(resolve => { // Code will not go on until Promise resolved
+        const confirmBox = document.createElement("div");
+        confirmBox.className = 'popup'; // Structural div
+
+        const p = document.createElement('p');
+        p.innerText = message; // Display message in <p> tag
+        confirmBox.appendChild(p);
+
+        const confirmClose = document.createElement("button");
+        confirmClose.className = 'popupButton'; // Create a button which serves as 'No'
+        confirmClose.id = 'close';
+        confirmClose.innerText = "No";
+        confirmBox.appendChild(confirmClose);
+
+        confirmClose.onclick = () => {
+            confirmBox.remove(); // Delete this entire HTML structure from the app
+            resolve(false); // Resolve a Promise, return false since user answered 'No'
+        };
+
+        const confirmYes = document.createElement("button");
+        confirmYes.className = 'popupButton'; // Create a button which serves as 'Yes'
+        confirmYes.id = 'confirmYes';
+        confirmYes.innerText = "Yes";
+        confirmBox.appendChild(confirmYes);
+
+        confirmYes.onclick = () => {
+            confirmBox.remove(); // Delete this entire HTML structure from the app
+            resolve(true); // Resolve a Promise, return ture since user answered 'Yes'
+        };
+
+        document.body.appendChild(confirmBox); // Show the Confirm popup
     });
 }

@@ -29,18 +29,20 @@
 
 
 
-#promptClose {
+#close {
     background-color: crimson;
     float: left;
 }
-/*Change of color and float for Prompt close button*/
-#promptClose:hover {
+/*Change of color and float for Prompt and Confirm close button*/
+#close:hover {
     background-color: brown;
 }
-/*Change of float for Prompt send button*/
-#promptSend {
+/*Change of float for Prompt/Confirm Send/Yes button*/
+#promptSend, #confirmYes {
     float: right;
 }
+
+
 /*Prompt's input styling*/
 #resetUsername {
     display: flex;
