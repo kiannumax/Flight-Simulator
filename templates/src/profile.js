@@ -21,7 +21,7 @@ async function changeUsername() {
 
     } finally {
         if(data['success']) {  // Refresh the page if username change was successful
-            window.open('http://localhost:63342/FSgame/templates/profile.html', '_self');
+            location.reload();
 
         } else {  // Otherwise alert the user that it failed
             await openAlert("Username change failed. Try again later!");
@@ -69,7 +69,7 @@ async function profileData() {
         // Initialize a list of user's past games and fill it while traversing through fetched list of games
        for(let game of data['games']) {
            let string = `Distance traveled: ${game['dstnc_traveled'].toFixed(2)}km 
-           Amount of Airports visited: ${game['airports_count']} | Initial Airport: ${game['init_airport']} 
+           Amount of Airports visited: ${game['airports_count']} | Initial Airport: ${game['init_airport'].replaceAll('?', '')} 
            Date played: ${new Date(game['date_played']).toLocaleString().replaceAll('/', '.').split(',')[0]}`;
            // Create a string containing info about a game and append it to a list element
            const li = document.createElement('li');

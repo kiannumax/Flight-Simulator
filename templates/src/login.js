@@ -52,7 +52,7 @@ async function resetPassword(username) {
 
     } finally {
         await openAlert(data['message']);  // Show message to user using custom Alert
-        window.open('http://localhost:63342/FSgame/templates/login.html', '_self');
+        location.reload();
         // Reload the page no matter the outcome of Password reset
     }
 }
@@ -82,7 +82,7 @@ async function checkIP() {
 
         } else {  // If IPs do not match or username doesn't exist, alert user with message and reload the page
             await openAlert(data['message']);
-            window.open('http://localhost:63342/FSgame/templates/login.html', '_self');
+            location.reload();
         }
     }
 }

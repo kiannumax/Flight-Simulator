@@ -1,21 +1,73 @@
-All of the modules were written and tested on a MAC
+Entire application was written and tested on MACs
 
 Program currently uses a local based database, so it will not work on any other machine that doesn't
 have the same database with same credentials.
-Eventually this project will move to a cloud database, so multi-machine work will be possible.
 
-Program currently uses 6 libraries(modules):
-  4 built-in python3 libraries(modules): socket, sys, datetime, random
-  And 2 global libraries(modules) which required an installation: bcrypt, geopy
+Program currently uses 6 Python libraries(modules):
+  2 built-in Python3 libraries(modules): datetime, random
+  And 5 global libraries(modules) which required an installation: bcrypt, geopy, Flask, CORS, mysql.connector
 
+Flask server is running on http://127.0.0.1:5000 on main.py file and has 11 different API Calls Handlers
+main.py file imports all functions from different modules located under "backend" directory
 
+All of those calls are coming from a different tab where HTML and their JavaScript files are opened and executed.
+In total there are 5 different HTML files/pages.
 
+-------------------------------------------------------------------------------------------------------------------------------
 
-SQL queries that were run to modify the structure of the table (also includes some test queries):
--------------------------------------------------------
+One additional API call was used in the application:
+
+'https://api.ipify.org/?format=json' from  (https://www.ipify.org/)
+It returns user's public IP address in JSON format {'ip': ....}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+JavaScript scripts did not have any external modules.
+Only import and exports used between the scripts under the same directory
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+3 Different Font styles were used throughout 5 different pages:
+
+    Rubik (https://fonts.google.com/specimen/Rubik?query=rubik)
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Coiny&family=Rubik:wght@400;500;600;700&family=Sono:wght@400;600;700&display=swap" rel="stylesheet">
+
+        font-family: 'Rubik', sans-serif;
+
+    Roboto Slab (https://fonts.google.com/specimen/Roboto+Slab)
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+        font-family: 'Roboto Slab', sans-serif;
+
+   Dhurjati (https://fonts.google.com/specimen/Dhurjati)
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap" rel="stylesheet">
+
+        font-family: 'Dhurjati', sans-serif;
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Several ideas were taken from researching, but all of them were implemented manually with no copying. For example, custom
+Alert, Confirm, and Prompt popups. But there was one element that was copied from external source:
+
+The svg tag and its animation from game.html
+However, little portion of CSS was modified.
+
+Source: https://codepen.io/webduke/pen/RydqXg
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+SQL queries that were run to modify the structure of the table:
+
 drop table goal_reached;
 drop table goal;
 drop table users;
+
 
 create table users(
     id int not null auto_increment,
@@ -26,17 +78,13 @@ create table users(
     Primary key (ID)
 )
 
-SELECT COUNT(1) FROM users WHERE username = 'supremepirate' and password = 'tutik';
 
 alter table users modify password nvarchar(72);
 alter table games modify initial_airport varchar(40);
 
-INSERT INTO users (username, password, date_registered, IP)
-VALUES ('puprim', "agsd", '34,5', '124.0.0'), ('puprim', "agsd", '34,5', '124.0.0');
-SELECT ROW_COUNT();
-
 delete from users;
 drop table game;
+
 
 create table games(
     id int not null auto_increment,
@@ -48,4 +96,3 @@ create table games(
     Primary key (id),
     foreign key (user_id) references users(id)
 );
-

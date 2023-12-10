@@ -12,7 +12,7 @@ async function globalLeaderboard() {
 
            for(let i = 0; i < data['length']; i++) {  // Traverse through the games list
                const string = `Username: ${data['username'][i]} | Distance traveled: ${data['dstnc_traveled'][i].toFixed(2)}km 
-               Amount of Airports visited: ${data['airports_count'][i]} | Initial Airport: ${data['init_airport'][i]} 
+               Amount of Airports visited: ${data['airports_count'][i]} | Initial Airport: ${data['init_airport'][i].replaceAll('?', '')} 
                Date played: ${new Date(data['date_played'][i]).toLocaleString().replaceAll('/', '.').split(',')[0]}`;
                // Create a text describing game stats
                const li = document.createElement('li');

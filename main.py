@@ -56,17 +56,17 @@ def getProfileData(token):
 def showGlobalLeaderboard():
     return showLeaderboard()
 
-
+# Get Initial Airport API Handler
 @app.route('/getInitialAirport', methods=['GET'])
 def initialAirport():
     return getInitialAirport()
 
-
+# Get Closest Airports API Handler
 @app.route('/getClosestAirports/<latitude>/<longitude>/<pastAirports>', methods=['GET'])
 def closestAirports(latitude, longitude, pastAirports):
     return getClosestAirports(latitude, longitude, pastAirports)
 
-
+# Game saving API Handler
 @app.route('/saveGame/<distance>/<token>/<airportCount>/<initialAirport>')
 def gameSave(distance, token, airportCount, initialAirport):
     return saveGame(distance, token, airportCount, initialAirport)
